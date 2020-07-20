@@ -18,3 +18,25 @@ exports.getcoupons = (req,res,next) => {
         }
       );
 };
+
+exports.addcoupons = (req,res,next) => {
+    const data = req.body;
+    stripe.coupons.create(
+        {
+          duration: data.duration,
+          percent_off: data.percent_off,
+          name: data.name 
+        },
+        function(err, coupon) {
+            if(!err){
+                console.log(coupon)
+                return res.status(201).json({
+                  data: coupon
+                });
+            }
+            res.status(404).json({
+                message: err
+            })
+          }
+      );
+};
