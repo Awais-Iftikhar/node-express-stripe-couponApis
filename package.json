@@ -11,5 +11,11 @@
     "url": "C:\\Users\\awais\\Desktop\\couponappbackend"
   },
   "author": "Awais-Iftikhar",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
