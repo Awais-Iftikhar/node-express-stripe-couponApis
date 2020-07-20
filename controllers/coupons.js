@@ -1,3 +1,20 @@
+const stripe = require('stripe')('sk_test_51H5of9KvUlSUjYzsS2bwvB2Q9Lh4BIQklNbnxRM9Hhar797P7xxsU8hlLefpa1nGovHSlqMBI5sezHVu62mwYMv300Dikb6y96');
+
+
 exports.getcoupons = (req,res,next) => {
-    console.log('list of coupons');
+    stripe.coupons.list(
+        {
+            limit: 100
+        },
+        function(err, coupons) {
+          if(!err){
+              return res.status(200).json({
+                data: coupons
+              });
+          }
+          res.status(404).json({
+              message: 'error found'
+          })
+        }
+      );
 };
