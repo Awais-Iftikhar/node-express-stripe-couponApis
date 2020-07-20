@@ -40,3 +40,20 @@ exports.addcoupons = (req,res,next) => {
           }
       );
 };
+
+exports.deletecoupon = (req,res,next) => {
+    const data = req.params.id;
+    stripe.coupons.del(
+        data,
+        function(err, confirmation) {
+          if(!err){
+              return res.status(200).json({
+                  message: 'successfully deleted'
+              });
+          }
+          res.status(404).json({
+              message: 'error'
+          })
+        }
+      );
+};
