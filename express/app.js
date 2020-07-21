@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const boddyparser = require('body-parser');
-const routes = require('../routes/coupons');
+const couponroutes = require('../routes/coupons');
+const userroutes = require('../routes/user');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
@@ -22,6 +23,7 @@ app.use((req,res,next) => {
 
 app.use(boddyparser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(routes); 
+app.use(couponroutes); 
+app.use(userroutes);
 
 module.exports = app;
