@@ -29,3 +29,34 @@ exports.signupuser = (req,res,next) => {
     });
   });
 }
+
+
+exports.loginuser = (req,res, next) => {
+    let fetchuser;
+    User.findOne({ email: req.body.email})
+    .then(user => {
+      if(!user){
+        return res.status(404).json({
+          message: 'No user with this email'
+        });
+      }
+      fetchuser = user;
+      return bcrypt.compare(req.body.password, user.password);
+    })
+    .then(result => {
+      if(!result){
+        return res.status(401).json({
+          message: 'password does not match'
+        });
+      }
+      res.status(200).json({
+        message: 'login success',
+      })
+    })
+    .catch(err => {
+      return res.status(401).json({
+        message: 'Login failed',
+      });
+    })
+  }
+  
