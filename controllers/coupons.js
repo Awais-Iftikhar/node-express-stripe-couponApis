@@ -69,6 +69,23 @@ exports.addcoupons = (req, res, next) => {
   );
 };
 
+exports.getsinglecoupon = (req, res, next) => {
+  const couponid = req.params.couponid;
+  console.log(couponid);
+  stripe.coupons.retrieve(
+    couponid,
+    function(err, coupon) {
+      if(!err){
+        console.log(coupon);
+        return res.status(200).json({
+          data: coupon
+        })
+      }
+    }
+  );
+
+}
+
 exports.deletecoupon = (req, res, next) => {
   const data = req.params.id;
   stripe.coupons.del(data, function (err, confirmation) {
