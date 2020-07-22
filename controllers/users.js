@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/users');
+const jwt = require('jsonwebtoken');
 
 exports.signupuser = (req,res,next) => {
   const userdata = req.body;
@@ -49,8 +50,10 @@ exports.loginuser = (req,res, next) => {
           message: 'password does not match'
         });
       }
+      const token = jwt.sign({user : fetchuser.email},'my_secret_key_for_login_user');
       res.status(200).json({
         message: 'login success',
+        token: token
       })
     })
     .catch(err => {
