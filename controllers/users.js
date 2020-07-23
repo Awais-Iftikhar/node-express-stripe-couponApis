@@ -26,7 +26,7 @@ exports.signupuser = (req,res,next) => {
   })
   .catch(err => {
     res.status(500).json({
-      message: 'Sign up failure'
+      message: 'invalid credentials'
     });
   });
 }
@@ -36,6 +36,7 @@ exports.loginuser = (req,res, next) => {
     let fetchuser;
     User.findOne({ email: req.body.email})
     .then(user => {
+      console.log(user);
       if(!user){
         return res.status(404).json({
           message: 'No user with this email'
@@ -58,7 +59,7 @@ exports.loginuser = (req,res, next) => {
     })
     .catch(err => {
       return res.status(401).json({
-        message: 'Login failed',
+        message: 'Invalid credentials',
       });
     })
   }
