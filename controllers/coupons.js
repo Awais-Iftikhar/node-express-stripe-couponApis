@@ -59,7 +59,7 @@ exports.addcoupons = (req, res, next) => {
         });
       }
       if(data.discountamount === null && data.percentoff === null){
-        errormsg = 'Must provide percent_off or amount_off'
+        errormsg = 'Must provide percent_off or discount amount'
       }
       else if(data.discountamount === null || data.currency === null){
         errormsg = 'You must pass currency when passing an amount'

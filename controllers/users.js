@@ -48,7 +48,7 @@ exports.loginuser = (req,res, next) => {
     .then(result => {
       if(!result){
         return res.status(401).json({
-          message: 'password does not match'
+          message: 'incorrect password'
         });
       }
       const token = jwt.sign({user : fetchuser.email},'my_secret_key_for_login_user');
