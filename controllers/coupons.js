@@ -1,6 +1,5 @@
-const stripe = require("stripe")(
-  "sk_test_51H5of9KvUlSUjYzsS2bwvB2Q9Lh4BIQklNbnxRM9Hhar797P7xxsU8hlLefpa1nGovHSlqMBI5sezHVu62mwYMv300Dikb6y96"
-);
+require('dotenv').config();
+const stripe = require("stripe")(`${process.env.STRIPE_SECRET_KEY}`);
 
 exports.getcoupons = (req, res, next) => {
   stripe.coupons.list(

@@ -5,8 +5,9 @@ const couponroutes = require('../routes/coupons');
 const userroutes = require('../routes/user');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-mongoose.connect(`mongodb+srv://awais:ad4J1OqN7mGAQ7cd@cluster0-cwpaz.mongodb.net/manageusers?retryWrites=true&w=majority`,{ useUnifiedTopology: true ,useNewUrlParser: true})
+mongoose.connect(`${process.env.MONGO_URI}`,{ useUnifiedTopology: true ,useNewUrlParser: true})
 .then(() => {
   console.log('connected');
 })
