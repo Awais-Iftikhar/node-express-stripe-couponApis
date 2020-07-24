@@ -23,7 +23,7 @@ app.use((req,res,next) => {
 
 app.use(boddyparser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(couponroutes); 
-app.use(userroutes);
+app.use('/api/coupons',couponroutes); 
+app.use('/api/users',userroutes);
 
 module.exports = app;

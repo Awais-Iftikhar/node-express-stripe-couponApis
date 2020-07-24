@@ -3,9 +3,9 @@ const router = express.Router();
 const controller = require('../controllers/coupons');
 const auth = require('../middleware/checkauth');
 
-router.get('/api/coupons' ,auth, controller.getcoupons);
-router.post('/api/coupons',auth, controller.addcoupons);
-router.get('/api/coupons/:couponid',auth, controller.getsinglecoupon);
-router.delete('/api/coupons/:id', controller.deletecoupon);
+router.get('' ,auth, controller.getcoupons);
+router.post('',auth, controller.addcoupons);
+router.get('/:couponid',auth, controller.getsinglecoupon);
+router.delete('/:id', controller.deletecoupon);
 
 module.exports = router;
